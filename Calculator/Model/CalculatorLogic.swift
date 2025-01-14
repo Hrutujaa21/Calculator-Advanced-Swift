@@ -18,7 +18,6 @@ struct CalculatorLogic {
     }
     
     mutating func calculate(symbol: String) -> Double? {
-       
         if let n = number {
             switch symbol {
             case "+/-":
@@ -32,17 +31,6 @@ struct CalculatorLogic {
             default:
                 intermediateCalculation = (n1: n, calcMethod: symbol)
             }
-//            if symbol == "+/-" {
-//                return n * -1
-//            } else if symbol == "AC" {
-//                return 0
-//            } else if symbol == "%" {
-//                return n * 0.01
-//            } else if symbol == "=" {
-//                return performTwoNumCalculation(n2: n)
-//            } else {
-//                intermediateCalulation = (n1: n, calcMethod: symbol)
-//            }
         }
         return nil
     }
@@ -64,5 +52,12 @@ struct CalculatorLogic {
             }
         }
         return nil
+    }
+}
+
+extension Double {
+    func round(to places: Int) -> Double {
+        let divisor = pow(10.0, Double(places))
+        return (self * divisor).rounded() / divisor
     }
 }
